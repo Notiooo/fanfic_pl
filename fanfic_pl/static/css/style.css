@@ -1,0 +1,71 @@
+.triangle-bottomright { 
+	-webkit-clip-path: polygon(100% 100%, 0% 100%, 100% 0);
+	clip-path: polygon(100% 100%, 0% 100%, 100% 0);
+}
+.triangle-bottomleft{
+	-webkit-clip-path: polygon(0 0, 0% 100%, 100% 100%);
+	clip-path: polygon(0 0, 0% 100%, 100% 100%);
+}
+html, body
+{
+	background-color: #EEEEEE;
+}
+
+#banner
+{
+	height: 600px;
+}
+
+.ff-no-transparency
+{
+	opacity: 1 !important;
+}
+
+.ff-purple{
+	background-color: #331F3A;
+	color: #FFFFFF;
+}
+
+.uk-search-default{
+	background-color: #FFFFFF;
+	border-radius: 8px;
+}
+.uk-search-default .uk-search-input{
+	border: 0;
+}
+.uk-navbar-nav>li>a{
+	color: inherit;
+}
+
+.ff-box{
+	border-top:5px solid #331f3a;
+	border-bottom:5px solid #331f3a;
+
+	border-left:1px solid #331f3a;
+	border-right:1px solid #331f3a;
+	background-color: #F8F8F8;
+}
+.ff-trapezoid-left{
+	-webkit-clip-path: polygon(0 0, 100% 0, 55% 100%, 0% 100%);
+	clip-path: polygon(0 0, 100% 0, 55% 100%, 0% 100%);
+	background-color: #331f3a;
+	color: #FFFFFF;
+	text-indent: .5em;
+}
+.ff-trapezoid-right{
+	-webkit-clip-path: polygon(100% 0, 0 0, 45% 100%, 100% 100%);
+	clip-path: polygon(100% 0, 0 0, 45% 100%, 100% 100%);
+	background-color: #331f3a;
+	color: #FFFFFF;
+}
+.ff-triangle{
+	-webkit-clip-path: polygon(0 0, 100% 100%, 100% 0);
+	clip-path: polygon(0 0, 100% 100%, 100% 0);
+	background-color: #331f3a;
+	color: #FFFFFF;
+}
+.ff-colorbox{
+	background-color: #331f3a;
+	color: #FFFFFF;
+}
+

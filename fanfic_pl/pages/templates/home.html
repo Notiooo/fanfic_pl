@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="banner" uk-scrollspy="cls:uk-animation-fade" class="uk-background-blend-overlay uk-background-secondary uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-text-center" data-src="{% static 'img/banner.jpg' %}" uk-img>
+	<div class="uk-width-4-5" uk-scrollspy="cls:uk-animation-slide-left-medium">
+		<div>
+			<h1 class="uk-heading-primary">Czytaj, twórz, baw się dobrze!</h1>
+			<form class="uk-search uk-search-large" style="border-bottom: 1px solid white;">
+			    <span uk-search-icon></span>
+			    <input class="uk-search-input" type="search" placeholder="">
+			</form>
+			<h4>Wyszukaj swój fandom</h4>
+		</div>
+  	</div>
+</div>
+<div class="uk-container" style="margin-top: -100px;">
+	<div class="uk-child-width-1-5@m uk-child-width-1-4@s uk-text-center uk-flex-center" uk-grid uk-height-match="target: > div > .uk-card" uk-scrollspy="target: > div; cls: uk-animation-slide-bottom; delay: 200">
+	    <div>
+	        <div class="uk-card uk-card-default uk-card-body uk-border-rounded uk-card-small uk-card-hover">
+	        	<img src="{% static 'img/open-book.png' %}" style="height: 60px;"/>
+	        	<h4 class="uk-text-large">Fanfici</h4>
+	        </div>
+	    </div>
+	    <div>
+	        <div class="uk-card uk-card-default uk-card-body uk-border-rounded uk-card-small uk-card-hover">
+	        	<img src="{% static 'img/contract.png' %}" style="height: 60px;"/>
+	        	<h4 class="uk-text-large">Twórz</h4>
+	        </div>
+	    </div>
+	    <div>
+	        <div class="uk-card uk-card-default uk-card-body uk-border-rounded uk-card-small uk-card-hover">
+	        	<img src="{% static 'img/group.png' %}" style="height: 60px;"/>
+	        	<h4 class="uk-text-large">Fandomy</h4>
+	        </div>
+	    </div>
+	   	<div>
+	        <div class="uk-card uk-card-default uk-card-body uk-border-rounded uk-card-small uk-card-hover">
+	        	<img src="{% static 'img/books.png' %}" style="height: 60px;"/>
+	        	<h4 class="uk-text-large">Opowiadania</h4>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+{% endblock content %}

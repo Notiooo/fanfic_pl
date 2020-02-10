@@ -1,0 +1,8 @@
+*.pc
+*.pyc
+*.pyo
+__pycache__
+
+.idea
+secret_settings.py
+fanfic_pl/db.sqlite3
