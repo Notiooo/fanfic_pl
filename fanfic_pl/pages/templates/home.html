@@ -7,11 +7,11 @@
 	<div class="uk-width-4-5" uk-scrollspy="cls:uk-animation-slide-left-medium">
 		<div>
 			<h1 class="uk-heading-primary">Czytaj, twórz, baw się dobrze!</h1>
-			<form class="uk-search uk-search-large" style="border-bottom: 1px solid white;">
+			<form class="uk-search uk-search-large" style="border-bottom: 1px solid white;" method="GET" action="{% url 'fandoms' %}">
 			    <span uk-search-icon></span>
-			    <input class="uk-search-input" type="search" placeholder="">
+			    <input class="uk-search-input" name="search" type="search" placeholder="">
 			</form>
-			<h4>Wyszukaj swój fandom</h4>
+			<h4 class="uk-margin-remove">Wyszukaj swój fandom</h4>
 		</div>
   	</div>
 </div>
@@ -30,10 +30,12 @@
 	        </div>
 	    </div>
 	    <div>
-	        <div class="uk-card uk-card-default uk-card-body uk-border-rounded uk-card-small uk-card-hover">
-	        	<img src="{% static 'img/group.png' %}" style="height: 60px;"/>
-	        	<h4 class="uk-text-large">Fandomy</h4>
-	        </div>
+			<a class="uk-link-reset" href="{% url 'fandoms' %}">
+				<div class="uk-card uk-card-default uk-card-body uk-border-rounded uk-card-small uk-card-hover">
+					<img src="{% static 'img/group.png' %}" style="height: 60px;"/>
+					<h4 class="uk-text-large">Fandomy</h4>
+				</div>
+			</a>
 	    </div>
 	   	<div>
 	        <div class="uk-card uk-card-default uk-card-body uk-border-rounded uk-card-small uk-card-hover">
@@ -42,6 +44,19 @@
 	        </div>
 	    </div>
 	</div>
+</div>
+
+<div class="uk-container uk-container-small uk-padding-large" uk-scrollspy="cls:uk-animation-fade; delay: 800">
+	<article class="uk-article">
+
+		<h1 class="uk-article-title">Czym jest Fanfic.pl?</h1>
+
+		<p class="uk-text-lead">Fanfic.pl jest dość ekspresowo powstającym projektem, który w przystępnej formie ma pozwolić na dzielenie się kreatywnością w obrębie fandomów.</p>
+		<p>Niestety fanfic.pl powstaje bardzo ekspresowo - tak naprawdę w krótkiej przerwie międzysemestralnej na studiach 😓.</p>
+		<p>Miałem też długą przerwę od tego typu aktywności, więc wiele rzeczy muszę sobie przypominać. Jednak jak widać projekt powstał i będzie rozwijany. Rozwija go nie tylko mój wkład, ale wkład każdego użytkownika, który uzupełnia stronę jakąkolwiek treścią <i>(komentarze, tłumaczenia, fanfici, opowiadania)</i>. </p>
+		<p>Projekt póki co wydany jest bardziej w formie <b>BETA</b>, ale celuje w wiele udogodnień na jakie żadne w tym momencie strony tego pokroju jeszcze sobie nie pozwoliły. Będzie rozwijany... spokojnie...</p>
+
+	</article>
 </div>
 
 {% endblock content %}

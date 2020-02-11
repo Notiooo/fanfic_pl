@@ -9,10 +9,16 @@
 	<script src="{% static 'js/uikit.min.js' %}"></script>
 	<script src="{% static 'js/uikit-icons.min.js' %}"></script>
 	<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <header> {% include 'base/navbar.html' %} </header>
 <body>
     {% block content %}
     {% endblock content %}
 </body>
+<footer>
+	{% block footer %}
+	{% endblock footer %}
+</footer>
+{% block javascript %} {% endblock javascript %}
 </html>

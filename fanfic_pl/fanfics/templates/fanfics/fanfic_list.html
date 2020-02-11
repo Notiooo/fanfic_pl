@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block javascript %}
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $("#examples a").on("click", function(){
+        var text = $('#search-input');
+        text.val(text.val() + $(this).attr("data-val") + ", ");
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div uk-scrollspy="cls:uk-animation-fade" class="uk-background-blend-overlay uk-background-secondary uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-text-center" uk-toggle="cls: uk-height-viewport; mode: media; media: (max-width: 700px)" data-src="{% static 'img/banner.jpg' %}" uk-img>
+	<div class="uk-width-4-5@s" uk-scrollspy="cls:uk-animation-slide-left-medium">
+		<div class="uk-margin-large-top">
+			<h1 class="uk-heading-primary">Szukaj fandomów</h1>
+			<h3 class="uk-margin-remove-top">Przykładowe tagi:</h3>
+			<div id="examples">
+				 <div class="uk-grid-small uk-grid-divider uk-child-width-auto uk-flex uk-flex-center" uk-grid>
+	                <div>
+	                    <ul class="uk-subnav uk-subnav-pill" uk-margin>
+                            {% if request.GET %}
+                            <li><a data-val="" href="{% url 'fandoms' %}">Wszystko</a></li>
+                            {% else %}
+	                        <li class="uk-active"><a data-val="" href="{% url 'fandoms' %}">Wszystko</a></li>
+                            {% endif %}
+	                    </ul>
+	                </div>
+	                <div>
+	                    <ul class="uk-subnav uk-subnav-pill" uk-margin>
+	                        <li><a data-val="zwierzeta">Zwierzęta</a></li>
+	                        <li><a data-val="ludzie">Ludzie</a></li>
+	                        <li><a data-val="antropomorficzne">Antropomorficzne</a></li>
+	                    </ul>
+	                </div>
+	                <div>
+	                    <ul class="uk-subnav uk-subnav-pill uk-flex-center" uk-margin>
+	                        <li><a data-val="seriale">Seriale</a></li>
+	                        <li><a data-val="filmy">Filmy</a></li>
+	                        <li><a data-val="animowane">Animowane</a></li>
+	                        <li><a data-val="anime, manga">Anime/manga</a></li>
+	                        <li><a data-val="ksiazki">Książki</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+	        <form class="uk-search uk-search-large uk-margin-small-top" method="get" style="border-bottom: 1px solid white; height: 50px;" uk-toggle="cls: uk-margin-large-top; mode: media; media: (max-width: 700px)">
+			    <span uk-search-icon="ratio: 0.5;"></span>
+			    <input class="uk-search-input" type="search" id="search-input" name="search" placeholder="Szukaj po tagach lub nazwie" style="font-size: 20px; height: 50px;">
+			</form>
+            <p class="uk-text-meta uk-margin-remove">Tagi oddziel przecinkami</p>
+		</div>
+  	</div>
+</div>
+<div class="uk-container">
+    {% if fandoms %}
+	<ul class="uk-flex-center uk-text-center" uk-grid="masonry: true" style="margin-top: -30px;" uk-scrollspy="target: > li > div; cls: uk-animation-slide-bottom-medium; delay: 200">
+		{% for fandom in fandoms %}
+        <li data-characters='zwierzeta'>
+			<div class="uk-card uk-card-default uk-card-small uk-width-medium">
+			    <div class="uk-card-header">
+			        <div class="uk-grid-small uk-flex-middle" uk-grid>
+			            <div class="uk-width-expand">
+			                <h3 class="uk-card-title uk-margin-remove-bottom">{{ fandom.fandom_name }}</h3>
+			            </div>
+			        </div>
+			    </div>
+			    <div class="uk-card-body">
+			        <p>{{ fandom.description }}</p>
+			    </div>
+			    <div class="uk-card-footer">
+                    {% for tag in fandom.tags.all %}
+			        <span class="uk-label">{{ tag }}</span>
+                    {% endfor %}
+			    </div>
+			</div>
+		</li>
+        {% endfor %}
+	</ul>
+    {% else %}
+    <div class="uk-text-center uk-position-z-index uk-position-relative uk-animation-shake">
+        <p style="margin-top: -60px; font-size: 92px;">😢</p>
+        <p class="uk-text-large">Przepraszamy, nie ma takich fandomów :c</p>
+    </div>
+    {% endif %}
+</div>
+<div id="add_fandom" class="uk-position-fixed uk-position-bottom-right uk-padding-large" uk-toggle="cls: ff-no-transparency; mode: hover" style="opacity: 0.65;" >
+	<div class="uk-card uk-card-default uk-card-body">
+		<button uk-toggle="target: #add_fandom" class="uk-position-top-right uk-padding-small" type="button" uk-close></button>
+		<p>Nie ma twojego fandomu?<br/>Zaproponuj go <a href="#">tutaj</a> 😊</p>
+	</div>
+</div>
+{% endblock content %}
