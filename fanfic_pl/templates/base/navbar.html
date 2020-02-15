@@ -21,7 +21,7 @@
                         <li>Hej, {{ user.username }}!</li>
                         <li><a href="#">Twoje opowiadania</a></li>
                         <li><a href="#">Twoje fanfici</a></li>
-                        <li><a href="#">Twój profil</a></li>
+                        <li><a href="{% url 'profile' user.id %}">Twój profil</a></li>
                         <li><a href="#">Ulubione</a></li>
                         <li><a href="{% url 'logout' %}?next={% firstof request.path '/' %}">Wyloguj się</a></li>
                     {% else %}

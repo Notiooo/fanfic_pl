@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profil użytkownika {{ user.username }} - Fanfic.pl{% endblock title %}
+
+{% block content %}
+<div class="uk-background-cover uk-flex uk-flex-center uk-padding-large uk-text-center" uk-height-viewport style="background-image: url('{% static 'img/blured-background.jpg' %}');">
+    <div class="uk-width-1-1 uk-padding" uk-grid>
+        <div class="uk-width-medium@s uk-text-break">
+            <img src="{% static 'img/user.png' %}" class="uk-width-2-3 uk-align-center uk-border-circle">
+            <div class="uk-card-body uk-card-secondary uk-card-small" style="padding-top: 80px; border-radius: 80px 80px 0px 0px; margin-top: -90px; border-bottom: 4px solid grey;">
+                <h3 class="uk-card-title uk-margin-remove-bottom">{{ obj_user.username }} {% if obj_user.is_staff %}<span class="uk-text-meta" style="color: red">(Administrator)</span>{% endif %}</h3>
+                <p class="uk-text-meta uk-margin-remove-top">Dołączył: {{ obj_user.date_joined }}</p>
+                <hr>
+                <!-- O SOBIE -->
+                <p class="uk-margin-remove">O sobie:</p>
+                <div class="uk-text-meta">{% if obj_user.about %} {{ obj_user.about }} {% else %} {{ obj_user.username }} nic o sobie nie napisał 😢 {% endif %}
+                </div>
+                <!-- DANE -->
+                <p class="uk-margin-remove-bottom">Informacje:</p>
+                <div class="uk-text-meta">Imie: {% if obj_user.first_name %} {{ obj_user.first_name }} {% else %} brak :c {% endif %}</div>
+                <div class="uk-text-meta">Data urodzenia: {% if obj_user.birth %} {{ obj_user.birth }} {% else %} nie urodził się :c {% endif %}</div>
+
+                {% if user == obj_user %}
+                <p class="uk-text-center">
+                    <a href=""><button class="uk-button uk-button-default">Edytuj swoje dane</button></a>
+                </p>
+                <p class="uk-text-center">
+                    <a href=""><button class="uk-button uk-button-secondary">Zmień swoje hasło</button></a>
+                </p>
+                {% endif %}
+            </div>
+            <div class="uk-width-1-1 uk-text-center uk-visible@s">
+                <img src="{% static 'img/user_books.png' %}" class="uk-width-small">
+            </div>
+        </div>
+
+        <!-- ACTIVITY TAB -->
+
+        <div class="uk-width-expand@s uk-light uk-text-left">
+            <h3>Ostatnia aktywność</h3>
+            <h3 class="uk-heading-line uk-text-center"><span>Ostatnie komentarze</span></h3>
+            <div class="uk-comment uk-background-secondary uk-padding uk-margin-bottom">
+                <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+                    <div class="uk-width-expand">
+                        <span uk-icon="icon: comment; ratio: 2" class="uk-float-right"></span>
+                        <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="">Tytul</a></h4>
+                        <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top uk-link-reset">
+                            <li><a>Data 21.05.1998</a></li>
+                            <li><a>Komentarz</a></li>
+                        </ul>
+                    </div>
+                </header>
+                <div class="uk-comment-body">
+                    <p>Text bla bla<a href="" class="uk-link-text uk-title-lead uk-float-right">Wyświetl komentarz</a></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

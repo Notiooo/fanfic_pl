@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="uk-heading-primary">{{ fandom.fandom_name }}</div>
+
+{% for fanfic in fandom.fanfics.all %}
+
+<p>{{ fanfic.title }}</p>
+<p>{{ fanfic.text }}</p>
+
+{% endfor %}
+{% endblock content %}
