@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # 3rd party
     'widget_tweaks',
     'taggit',
+    'django_summernote',
     
     # local
     'users.apps.UsersConfig',
@@ -136,5 +137,25 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_REDIRECT_URL = 'homepage'
 LOGOUT_REDIRECT_URL = 'homepage'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
-MEDIA_URL = '/uploads/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+SUMMERNOTE_THEME = 'lite'
+
+SUMMERNOTE_CONFIG = {
+    'summernote':
+        {
+            'width': '100%',
+            'lang': 'pl-PL',
+            'toolbar': [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['view', ['fullscreen']],
+              ],
+        },
+    'disable_attachment': True,
+}

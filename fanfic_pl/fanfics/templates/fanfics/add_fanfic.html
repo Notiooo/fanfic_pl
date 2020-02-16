@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+{% block content %}
+{% with WIDGET_ERROR_CLASS='uk-form-danger' %}
+<form id="form" class="" method="post">
+    {% csrf_token %}
+    <div class="uk-background-cover uk-light uk-flex uk-flex-center uk-flex-bottom uk-padding-large uk-text-center uk-height-large" style="background-image: url('{% static 'img/blured-background.jpg' %}');">
+        <div class="">
+            <legend class="uk-legend">Dodaj nowy fanfic</legend>
+                <div class="uk-fieldset">
+                    <div class="uk-margin">
+                        {% render_field form.title|attr:"autofocus" class+="uk-input uk-border-rounded" placeholder=form.title.label %}
+                        <div class="uk-text-meta uk-list">{{ form.title.help_text }}</div>
+                        <div class="uk-text-danger">
+                            {% for error in form.title.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        {% render_field form.nsfw class+="uk-checkbox" %}
+                        <div class="uk-text-meta uk-inline">{{ form.nsfw.help_text }}</div>
+                        <div class="uk-text-danger">
+                            {% for error in form.nsfw.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        {% render_field form.tags class+="uk-input uk-border-rounded" placeholder=form.tags.label %}
+                        <div class="uk-text-meta uk-list">{{ form.tags.help_text }}</div>
+                        <div class="uk-text-danger">
+                            {% for error in form.tags.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <button type="submit" class="uk-button uk-button-default uk-border-rounded">Zapisz</button>
+                        <button type="submit" class="uk-button uk-button-secondary uk-border-rounded">Opublikuj</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="uk-margin">
+        {% render_field form.text class+="uk-height-large" %}
+        <div class="uk-text-meta uk-list">{{ form.text.help_text }}</div>
+        <div class="uk-text-danger">
+            {% for error in form.text.errors %}
+            <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endwith %}
+</form>
+{% endblock content %}

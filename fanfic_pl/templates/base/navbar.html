@@ -8,9 +8,9 @@
     		<img src="{% static 'img/logo.png' %}" class="uk-height-1-1 uk-preserve-width">
     	</a>
         <ul class="uk-navbar-nav uk-visible@s">
-            <li><a href="#" uk-scroll>Fanfici</a></li>
+            <li><a href="{% url 'fandoms'%}">Fanfici</a></li>
             <li><a href="#" uk-scroll>Opowiadania</a></li>
-            <li><a href="#" uk-scroll>Twórz</a></li>
+            <li><a href="{% url 'fandoms' %}?create">Twórz</a></li>
             <li>
 		        <a href="#">
 		        	<img src="{% static 'img/user.png' %}" style="width: 50px; height: 50px;" class="uk-border-circle">

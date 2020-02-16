@@ -29,8 +29,10 @@ urlpatterns = [
     path('users/', include('django.contrib.auth.urls')),
     path('fanfics/', include('fanfics.urls')),
     path('stories/', include('stories.urls')),
+    path('summernote/', include('django_summernote.urls')),
     path('', include('pages.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

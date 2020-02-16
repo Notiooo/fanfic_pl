@@ -7,7 +7,7 @@
 {% for fanfic in fandom.fanfics.all %}
 
 <p>{{ fanfic.title }}</p>
-<p>{{ fanfic.text }}</p>
+<p>{{ fanfic.text | safe }}</p>
 
 {% endfor %}
 {% endblock content %}

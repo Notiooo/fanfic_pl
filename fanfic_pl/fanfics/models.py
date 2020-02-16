@@ -22,6 +22,7 @@ class Fanfic(models.Model):
     text = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     nsfw = models.BooleanField(default=False, help_text="Czy fanfic zawiera treści przeznaczone dla osób dorosłych?")
+    public = models.BooleanField(default=False)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
